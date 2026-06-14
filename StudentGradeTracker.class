@@ -1,0 +1,69 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class StudentGradeTracker {
+   public StudentGradeTracker() {
+   }
+
+   public static void main(String[] var0) {
+      Scanner var1 = new Scanner(System.in);
+      ArrayList var2 = new ArrayList();
+
+      int var3;
+      do {
+         System.out.println("\n===== Student Grade Tracker =====");
+         System.out.println("1. Add Student");
+         System.out.println("2. View Report");
+         System.out.println("3. Exit");
+         System.out.print("Enter choice: ");
+         var3 = var1.nextInt();
+         var1.nextLine();
+         switch (var3) {
+            case 1:
+               System.out.print("Enter student name: ");
+               String var4 = var1.nextLine();
+               System.out.print("Enter marks: ");
+               int var5 = var1.nextInt();
+               var2.add(new Student(var4, var5));
+               System.out.println("Student added successfully!");
+               break;
+            case 2:
+               if (var2.isEmpty()) {
+                  System.out.println("No data available.");
+                  break;
+               }
+
+               int var6 = 0;
+               int var7 = Integer.MIN_VALUE;
+               int var8 = Integer.MAX_VALUE;
+               System.out.println("\n--- Student Report ---");
+
+               for(Student var10 : var2) {
+                  System.out.println(var10.name + " - " + var10.marks);
+                  var6 += var10.marks;
+                  if (var10.marks > var7) {
+                     var7 = var10.marks;
+                  }
+
+                  if (var10.marks < var8) {
+                     var8 = var10.marks;
+                  }
+               }
+
+               double var11 = (double)var6 / (double)var2.size();
+               System.out.println("\nAverage Marks: " + var11);
+               System.out.println("Highest Marks: " + var7);
+               System.out.println("Lowest Marks: " + var8);
+               break;
+            case 3:
+               System.out.println("Exiting...");
+               break;
+            default:
+               System.out.println("Invalid choice!");
+         }
+      } while(var3 != 3);
+
+      var1.close();
+   }
+}
