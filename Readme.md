@@ -62,4 +62,4 @@ java StudentGradeTracker
 
 ## 👤 Author
 
-YASH PABALE (Intern- Code Alpha)
+YASHRAJ PABALE (Intern- Code Alpha)
